@@ -326,7 +326,7 @@ class Driver(Node):
             gripper = self.grippers[idx]
             if self.needs_synchronize(gripper):
                 self.scheduler.cyclic_execute(
-                    func=partial(gripper["driver"].receive_plc_input), cycle_time=0.05
+                    func=partial(gripper["driver"].receive_plc_input), cycle_time=1.0
                 )
 
         # Start info services

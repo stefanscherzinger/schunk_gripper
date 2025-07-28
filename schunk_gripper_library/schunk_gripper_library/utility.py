@@ -105,10 +105,12 @@ class Scheduler(object):
             _, task = self.tasks.get()
             if not task:
                 break
+            print(f"Next task: {task.func.func.__name__} with args: {task.func.args}")
             result = task.func()
             if task.future:
                 task.future.set_result(result)
             self.tasks.task_done()
+            print(f"Current task queue: {self.tasks.qsize()}")
 
 
 def gripper_available() -> bool:
